@@ -43,6 +43,10 @@ jobs:
 
       - name: Prepare standalone deployment
         run: |
+          echo "=== .next/ contents after build ==="
+          ls -la .next/
+          echo "=== standalone exists? ==="
+          ls -la .next/standalone/ 2>/dev/null || echo "KEIN standalone Verzeichnis!"
           mkdir -p .next/standalone/public .next/standalone/.next/static
           cp -r public/. .next/standalone/public/
           cp -r .next/static/. .next/standalone/.next/static/
