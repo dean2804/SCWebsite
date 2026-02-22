@@ -46,6 +46,9 @@ jobs:
           cp -r public .next/standalone/public
           cp -r .next/static .next/standalone/.next/static
           echo '{"scripts":{"start":"node server.js"}}' > .next/standalone/package.json
+          echo "=== Deployment folder size ==="
+          du -sh .next/standalone
+          du -sh .next/standalone/* 2>/dev/null || true
 
 # Please do not touch the following action
       - name: Store deployment content
