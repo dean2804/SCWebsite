@@ -46,7 +46,27 @@ jobs:
           cp -r public .next/standalone/public
           cp -r .next/static .next/standalone/.next/static
           echo '{"scripts":{"start":"node server.js"}}' > .next/standalone/package.json
-          echo "=== Deployment folder size ==="
+
+          # Compress images to reduce size
+          sudo apt-get install -y -q jpegoptim optipng
+          find .next/standalone/public -name "*.jpg" -o -name "*.jpeg" | xargs jpegoptim --max=82 --strip-all 2>/dev/null || true
+          find .next/standalone/public -name "*.png" | xargs optipng -quiet -o2 2>/dev/null || true
+
+          # Strip unnecessary files from node_modules
+          find .next/standalone/node_modules -name "*.md" -type f -delete
+          find .next/standalone/node_modules -name "*.map" -type f -delete
+          find .next/standalone/node_modules -name "*.d.ts" -type f -delete
+          find .next/standalone/node_modules -name "LICENSE*" -type f -delete
+          find .next/standalone/node_modules -name "CHANGELOG*" -type f -delete
+          find .next/standalone/node_modules -name "CHANGES*" -type f -delete
+          find .next/standalone/node_modules -name "AUTHORS*" -type f -delete
+          find .next/standalone/node_modules -name "__tests__" -type d -exec rm -rf {} + 2>/dev/null || true
+          find .next/standalone/node_modules -name "test" -type d -exec rm -rf {} + 2>/dev/null || true
+          find .next/standalone/node_modules -name "tests" -type d -exec rm -rf {} + 2>/dev/null || true
+          find .next/standalone/node_modules -name "docs" -type d -exec rm -rf {} + 2>/dev/null || true
+          find .next/standalone/node_modules -name "examples" -type d -exec rm -rf {} + 2>/dev/null || true
+
+          echo "=== Deployment folder size after optimization ==="
           du -sh .next/standalone
           du -sh .next/standalone/* 2>/dev/null || true
 
