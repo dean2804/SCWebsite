@@ -14,7 +14,7 @@ on:
         type: string
 
 env:
-  DEPLOYMENT_FOLDER: ./
+  DEPLOYMENT_FOLDER: .next/standalone
 
 jobs:
 # Please do not rename this job
@@ -40,6 +40,12 @@ jobs:
           RESEND_API_KEY: re_hBKaEoL5_FALM2ZqidmkxfF1MmPb4W16L
           SITE_URL: ${{ inputs.site-url }}
         run: npm run build
+
+      - name: Prepare standalone deployment
+        run: |
+          cp -r public .next/standalone/public
+          cp -r .next/static .next/standalone/.next/static
+          echo '{"scripts":{"start":"node server.js"}}' > .next/standalone/package.json
 
 # Please do not touch the following action
       - name: Store deployment content
