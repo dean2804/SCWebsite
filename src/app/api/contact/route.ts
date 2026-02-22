@@ -1,14 +1,14 @@
 import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const OWNER_EMAIL = "dean.dukic@supply-consult.com";
 const FROM_NOTIFICATION = "SupplyConsult Kontakt <noreply@supply-consult.com>";
 const FROM_CONFIRMATION = "Dean Dukic <dean.dukic@supply-consult.com>";
 
 export async function POST(req: NextRequest) {
   try {
+    // Resend wird erst zur Laufzeit instanziiert, nicht beim Build
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const body = await req.json();
     const { vorname, nachname, unternehmen, email, telefon, nachricht } = body;
 
