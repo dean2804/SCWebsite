@@ -33,19 +33,13 @@ jobs:
           node-version: v22.x
 
       - name: Build Node assets
-        env:
-          CI: true
-          Name: RESEND_API_KEY
-          SITE_URL: ${{ inputs.site-url }}
-          Wert: re_hBKaEoL5_FALM2ZqidmkxfF1MmPb4W16L
         run: npm ci
 
       - name: Run script
-# uncomment the following lines if you want to add environment variables for this step
-#        env:
-#          MY_ENV_VAR: value-for-my-env-var
-#          MY_SECRET_ENV_VAR: ${{ secrets.MY_SECRET }} # here you can find information how to create secrets: https://docs.github.com/en/actions/security-guides/encrypted-secrets
-        run: npm install && npm run build && npm start 
+        env:
+          RESEND_API_KEY: re_hBKaEoL5_FALM2ZqidmkxfF1MmPb4W16L
+          SITE_URL: ${{ inputs.site-url }}
+        run: npm run build
 
 # Please do not touch the following action
       - name: Store deployment content
