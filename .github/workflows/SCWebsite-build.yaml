@@ -43,8 +43,9 @@ jobs:
 
       - name: Prepare standalone deployment
         run: |
-          cp -r public .next/standalone/public
-          cp -r .next/static .next/standalone/.next/static
+          mkdir -p .next/standalone/public .next/standalone/.next/static
+          cp -r public/. .next/standalone/public/
+          cp -r .next/static/. .next/standalone/.next/static/
           echo '{"scripts":{"start":"node server.js"}}' > .next/standalone/package.json
 
           # Compress images to reduce size
