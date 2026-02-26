@@ -5,7 +5,7 @@ import { Check } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import LogoBanner from "@/components/LogoBanner";
 
-const TAGS_FIXED = ["MedTech", "Automotive", "Anlagenbau", "SAP S/4HANA", "Lean/SCOR"];
+const TAGS_FIXED = ["Automotive / Industrie", "MedTech / Pharma", "Konsumgüter", "SAP S/4HANA", "Lean/SCOR/BPM"];
 const KOMPETENZ_BGS = ["var(--navy-faint)", "var(--navy-dim)", "var(--navy-faint)"];
 
 export default function Profil() {

@@ -58,7 +58,8 @@ export default function Leistungen() {
       <section style={{ backgroundColor: "var(--navy-faint)" }} className="py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <p style={{ color: "var(--accent)" }} className="text-xs font-bold uppercase tracking-widest mb-2 anim-fade-in">{s.branchenTag}</p>
-          <h2 style={{ color: "var(--navy)" }} className="text-2xl font-bold mb-8 anim-fade-up">{s.branchenTitle}</h2>
+          <h2 style={{ color: "var(--navy)" }} className="text-2xl font-bold mb-3 anim-fade-up">{s.branchenTitle}</h2>
+          <p className="text-gray-500 text-sm mb-8 max-w-2xl anim-fade-up">{s.branchenSub}</p>
           <div className="flex flex-wrap gap-3">
             {s.branchen.map((b, i) => (
               <span key={b} style={{ backgroundColor: "var(--navy)", color: "white" }} className={`px-4 py-2 rounded-full text-sm font-medium anim-fade-up delay-${Math.min((i + 1) * 100, 500)}`}>
