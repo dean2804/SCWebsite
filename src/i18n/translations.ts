@@ -23,6 +23,15 @@ export const translations = {
       approachTitle: "Operativ stark.\nStrategisch klar.\nErgebnisorientiert.",
       approachBody: "Geopolitische Volatilität, Nearshoring-Druck und digitale Transformation erzwingen Handlungsbedarf – in Einkauf, Lieferkette und Organisation. Mein Ansatz: Methodenkompetenz (Lean/SCOR/BPM), operative Umsetzungstiefe und klare Kommunikation auf Ebene Geschäftsführung, Investoren und Teams.",
       approachLink: "Profil ansehen",
+      scenariosTag: "Einsatzsituationen",
+      scenariosTitle: "Wann bin ich der Richtige?",
+      scenariosSub: "Typische Situationen, in denen Unternehmen mich kurzfristig engagieren.",
+      scenarios: [
+        { title: "Lieferkette unter Druck", body: "Engpässe, Lieferantenausfälle oder geopolitische Krisen gefährden die Versorgungssicherheit – die Produktion steht still oder droht stillzustehen.", action: "Sofortmaßnahmen · Engpasssteuerung · Krisenlieferanten · Versorgungssicherung" },
+        { title: "Investor oder Insolvenz: Kosten müssen runter", body: "Turnaround-Situationen erfordern schnelle, messbare Savings und Working-Capital-Optimierung – unter erhöhtem Druck von Investoren oder Gläubigern.", action: "Savings-Programme · Lieferantenoptimierung · Cash-Flow-Steuerung" },
+        { title: "ERP-Einführung stockt oder ist instabil", body: "SAP S/4HANA, Dynamics 365 F&O oder proALPHA – der Go-live droht zu scheitern oder der Einkauf funktioniert im neuen System nicht stabil.", action: "Prozessdesign · Go-live-Stabilisierung · Einkauf & Disposition" },
+        { title: "Einkauf soll strategisch werden", body: "Kein Category Management, keine Lieferantenstrategie, kein Reporting – der Einkauf braucht ein professionelles Fundament mit messbarer KPI-Steuerung.", action: "S2C/P2P-Aufbau · Category Management · SRM · KPI-Governance" },
+      ],
       resultsTag: "Nachweisbare Ergebnisse", resultsTitle: "Harte Zahlen aus der Praxis",
       resultsLink: "Alle Stationen & Engagements",
       kpis: [
@@ -346,6 +355,15 @@ export const translations = {
       approachTitle: "Operationally strong.\nStrategically clear.\nResults-driven.",
       approachBody: "Geopolitical volatility, nearshoring pressure and digital transformation are forcing action – across procurement, supply chains and organizations. My approach: methodological expertise (Lean/SCOR/BPM), operational depth and clear communication at board, investor and team level.",
       approachLink: "View Profile",
+      scenariosTag: "Engagement Scenarios",
+      scenariosTitle: "When Do You Need Me?",
+      scenariosSub: "Typical situations in which companies engage me at short notice.",
+      scenarios: [
+        { title: "Supply chain under pressure", body: "Bottlenecks, supplier failures or geopolitical crises threaten supply security – with production at a standstill or at risk.", action: "Immediate measures · Bottleneck management · Crisis suppliers · Supply security" },
+        { title: "Investor or insolvency: costs must come down", body: "Turnaround situations require fast, measurable savings and working capital optimization – under pressure from investors or creditors.", action: "Savings programs · Supplier optimization · Cash flow management" },
+        { title: "ERP implementation is stalling or unstable", body: "SAP S/4HANA, Dynamics 365 F&O or proALPHA – the go-live is at risk or procurement isn't running stably in the new system.", action: "Process design · Go-live stabilization · Procurement & planning" },
+        { title: "Procurement needs to become strategic", body: "No category management, no supplier strategy, no reporting – procurement needs a professional foundation with measurable KPI governance.", action: "S2C/P2P setup · Category management · SRM · KPI governance" },
+      ],
       resultsTag: "Proven Results", resultsTitle: "Hard Numbers from Practice",
       resultsLink: "All Stations & Engagements",
       kpis: [
@@ -669,6 +687,15 @@ export const translations = {
       approachTitle: "Opérationnellement fort.\nStratégiquement clair.\nAxé sur les résultats.",
       approachBody: "La volatilité géopolitique, la pression du nearshoring et la transformation digitale créent un besoin d'action – dans les achats, la supply chain et l'organisation. Mon approche : expertise méthodologique (Lean/SCOR/BPM), profondeur d'exécution et communication claire au niveau de la direction, des investisseurs et des équipes.",
       approachLink: "Voir le profil",
+      scenariosTag: "Situations d'intervention",
+      scenariosTitle: "Quand faire appel à moi ?",
+      scenariosSub: "Situations typiques dans lesquelles les entreprises me mandatent rapidement.",
+      scenarios: [
+        { title: "La chaîne d'approvisionnement sous pression", body: "Pénuries, défaillances fournisseurs ou crises géopolitiques mettent en danger la sécurité d'approvisionnement – la production est à l'arrêt ou en passe de l'être.", action: "Mesures immédiates · Gestion des goulets · Fournisseurs de crise · Sécurité d'approvisionnement" },
+        { title: "Investisseur ou insolvabilité : les coûts doivent baisser", body: "Les situations de redressement exigent des économies rapides et mesurables et une optimisation du BFR – sous pression des investisseurs ou créanciers.", action: "Programmes d'économies · Optimisation fournisseurs · Pilotage du cash-flow" },
+        { title: "L'implémentation ERP est bloquée ou instable", body: "SAP S/4HANA, Dynamics 365 F&O ou proALPHA – le go-live risque d'échouer ou les achats ne fonctionnent pas stablement dans le nouveau système.", action: "Conception de processus · Stabilisation go-live · Achats & approvisionnement" },
+        { title: "Les achats doivent devenir stratégiques", body: "Pas de gestion des catégories, pas de stratégie fournisseurs, pas de reporting – les achats ont besoin d'une base professionnelle avec un pilotage KPI mesurable.", action: "Mise en place S2C/P2P · Gestion des catégories · SRM · Gouvernance KPI" },
+      ],
       resultsTag: "Résultats prouvés", resultsTitle: "Chiffres concrets issus de la pratique",
       resultsLink: "Toutes les stations & engagements",
       kpis: [

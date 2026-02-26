@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Settings, ShoppingCart, TrendingUp, Lightbulb, ArrowRight, ChevronRight } from "lucide-react";
+import { Settings, ShoppingCart, TrendingUp, Lightbulb, ArrowRight, ChevronRight, AlertTriangle, TrendingDown, Server, Target } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import LogoTicker from "@/components/LogoTicker";
 
@@ -14,6 +14,7 @@ const STATS = [
 ];
 
 const SERVICE_ICONS = [Settings, ShoppingCart, TrendingUp, Lightbulb];
+const SCENARIO_ICONS = [AlertTriangle, TrendingDown, Server, Target];
 
 export default function Home() {
   const { t } = useLanguage();
@@ -264,6 +265,64 @@ export default function Home() {
             </Link>
           </div>
 
+        </div>
+      </section>
+
+      {/* ── SCENARIOS ────────────────────────────────────────────────── */}
+      <section className="py-24 px-6" style={{ backgroundColor: "var(--navy-faint)" }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12 anim-slide-left">
+            <p
+              style={{ color: "var(--accent)" }}
+              className="text-xs font-bold uppercase tracking-widest mb-3"
+            >
+              {h.scenariosTag}
+            </p>
+            <h2
+              className="heading-serif text-3xl md:text-4xl mb-3"
+              style={{ color: "var(--navy)", fontWeight: 400 }}
+            >
+              {h.scenariosTitle}
+            </h2>
+            <p className="text-gray-500 max-w-xl text-sm leading-relaxed">{h.scenariosSub}</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-5">
+            {h.scenarios.map((s, i) => {
+              const Icon = SCENARIO_ICONS[i];
+              return (
+                <div
+                  key={s.title}
+                  className="rounded-2xl p-7 anim-fade-up"
+                  style={{
+                    backgroundColor: "white",
+                    borderLeft: "4px solid var(--accent)",
+                    animationDelay: `${(i + 1) * 0.1}s`,
+                  }}
+                >
+                  <Icon
+                    size={22}
+                    strokeWidth={1.5}
+                    style={{ color: "var(--accent)" }}
+                    className="mb-4"
+                  />
+                  <h3
+                    style={{ color: "var(--navy)" }}
+                    className="font-bold text-base mb-2 leading-snug"
+                  >
+                    {s.title}
+                  </h3>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-4">{s.body}</p>
+                  <p
+                    className="text-xs font-semibold tracking-wide"
+                    style={{ color: "var(--navy)" }}
+                  >
+                    {s.action}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
