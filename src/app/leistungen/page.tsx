@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Settings, ShoppingCart, TrendingUp, Lightbulb, Check } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import ProcessBgPattern from "@/components/ProcessBgPattern";
 
 const BGS = ["var(--navy-faint)", "var(--navy-dim)", "var(--navy-faint)", "var(--navy-dim)"];
 const DELAYS = ["delay-100", "delay-200", "delay-300", "delay-400"];
@@ -24,7 +25,8 @@ export default function Leistungen() {
         </div>
       </section>
 
-      <section className="py-24 px-6" style={{ backgroundColor: "var(--navy-faint)" }}>
+      <section className="relative py-24 px-6" style={{ backgroundColor: "var(--navy-faint)" }}>
+        <ProcessBgPattern id="pbp-services" />
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
           {s.items.map((l, i) => (
             <div key={l.title} style={{ backgroundColor: BGS[i] }} className={`rounded-2xl p-7 card-hover anim-fade-up ${DELAYS[i]}`}>

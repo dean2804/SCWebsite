@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { Check } from "lucide-react";
+import { Check, Layers, Zap, Server, Users, FileDown } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import LogoBanner from "@/components/LogoBanner";
 
 const TAGS_FIXED = ["Automotive / Industrie", "MedTech / Pharma", "Konsumgüter", "SAP S/4HANA", "Lean/SCOR/BPM"];
 const KOMPETENZ_BGS = ["var(--navy-faint)", "var(--navy-dim)", "var(--navy-faint)"];
+const DIFF_ICONS = [Layers, Zap, Server, Users];
 
 export default function Profil() {
   const { t } = useLanguage();
@@ -67,6 +68,32 @@ export default function Profil() {
         </div>
       </section>
 
+      {/* Differenzierung */}
+      <section style={{ backgroundColor: "var(--navy)" }} className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <p style={{ color: "var(--accent)" }} className="text-xs font-bold uppercase tracking-widest mb-2 anim-fade-in">{p.diffTag}</p>
+          <h2 className="text-2xl font-bold text-white mb-3 anim-fade-up">{p.diffTitle}</h2>
+          <p className="text-white/55 text-sm mb-10 max-w-2xl anim-fade-up">{p.diffSub}</p>
+          <div className="grid md:grid-cols-2 gap-6">
+            {p.diff.map((item, i) => {
+              const Icon = DIFF_ICONS[i];
+              return (
+                <div
+                  key={item.title}
+                  className={`rounded-2xl p-7 anim-fade-up delay-${Math.min((i + 1) * 100, 400)}`}
+                  style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(200,168,75,0.2)" }}
+                >
+                  <Icon size={22} strokeWidth={1.5} style={{ color: "var(--accent)" }} className="mb-4" />
+                  <h3 className="font-bold text-white text-base mb-3 leading-snug">{item.title}</h3>
+                  <p className="text-white/65 text-sm leading-relaxed mb-4">{item.body}</p>
+                  <p className="text-xs font-semibold" style={{ color: "var(--accent)" }}>{item.example}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Kernkompetenzen */}
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
@@ -119,6 +146,37 @@ export default function Profil() {
           {p.tags.map((tag) => (
             <span key={tag} style={{ backgroundColor: "var(--navy)", color: "white" }} className="px-5 py-2 rounded-full text-sm font-medium">{tag}</span>
           ))}
+        </div>
+      </section>
+
+      {/* Downloads */}
+      <section style={{ backgroundColor: "var(--navy)" }} className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <p style={{ color: "var(--accent)" }} className="text-xs font-bold uppercase tracking-widest mb-2 anim-fade-in">{p.downloadsTag}</p>
+          <h2 className="text-2xl font-bold text-white mb-2 anim-fade-up">{p.downloadsTitle}</h2>
+          <p className="text-white/50 text-sm mb-10 anim-fade-up">{p.downloadsSub}</p>
+          <div className="grid md:grid-cols-2 gap-5">
+            {p.downloads.map((d, i) => (
+              <div
+                key={d.title}
+                className={`rounded-2xl p-7 anim-fade-up delay-${(i + 1) * 100}`}
+                style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(200,168,75,0.2)" }}
+              >
+                <FileDown size={28} strokeWidth={1.5} style={{ color: "var(--accent)" }} className="mb-4" />
+                <h3 className="font-bold text-white text-base mb-2">{d.title}</h3>
+                <p className="text-white/55 text-sm leading-relaxed mb-6">{d.desc}</p>
+                <a
+                  href={d.href}
+                  download
+                  style={{ backgroundColor: "var(--accent)", color: "var(--navy)" }}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-sm hover:opacity-90 transition-opacity"
+                >
+                  <FileDown size={15} strokeWidth={2.5} />
+                  {d.btn}
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </>

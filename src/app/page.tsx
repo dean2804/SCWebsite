@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Settings, ShoppingCart, TrendingUp, Lightbulb, ArrowRight, ChevronRight, AlertTriangle, TrendingDown, Server, Target } from "lucide-react";
+import { Settings, ShoppingCart, TrendingUp, Lightbulb, ArrowRight, ChevronRight, AlertTriangle, TrendingDown, Server, Target, Layers, Zap, Users } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import LogoTicker from "@/components/LogoTicker";
+import ProcessFlowSVG from "@/components/ProcessFlowSVG";
+import ProcessBgPattern from "@/components/ProcessBgPattern";
 
 const STATS = [
   { value: "26+",          delay: "delay-100" },
@@ -15,6 +17,7 @@ const STATS = [
 
 const SERVICE_ICONS = [Settings, ShoppingCart, TrendingUp, Lightbulb];
 const SCENARIO_ICONS = [AlertTriangle, TrendingDown, Server, Target];
+const DIFF_ICONS = [Layers, Zap, Server, Users];
 
 export default function Home() {
   const { t } = useLanguage();
@@ -27,27 +30,21 @@ export default function Home() {
         className="relative min-h-screen flex items-center overflow-hidden"
         style={{ backgroundColor: "var(--navy)" }}
       >
-        {/* Right image panel — fade into navy on the left */}
+        {/* ── Floating orbs ── */}
+        <div className="orb-1" />
+        <div className="orb-2" />
+        <div className="orb-3" />
+
+        {/* Right panel — Process Flow SVG */}
         <div className="absolute right-0 top-0 bottom-0 w-[55%] hidden md:block">
-          <Image
-            src="/hero-bg.jpg"
-            alt="Strategy"
-            fill
-            className="object-cover object-center"
-            priority
-          />
+          <ProcessFlowSVG />
           <div
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(to right, var(--navy) 0%, rgba(15,32,68,0.82) 30%, rgba(15,32,68,0.3) 65%, transparent 100%)",
+                "linear-gradient(to right, var(--navy) 0%, rgba(15,32,68,0.88) 20%, rgba(15,32,68,0.25) 48%, transparent 72%)",
             }}
           />
-        </div>
-
-        {/* Mobile image background (subtle) */}
-        <div className="absolute inset-0 md:hidden">
-          <Image src="/hero-bg.jpg" alt="Strategy" fill className="object-cover object-center opacity-15" />
         </div>
 
         {/* Content */}
@@ -207,7 +204,8 @@ export default function Home() {
       </section>
 
       {/* ── APPROACH / PROFIL ─────────────────────────────────────────── */}
-      <section style={{ backgroundColor: "white" }} className="py-20 px-6">
+      <section style={{ backgroundColor: "white" }} className="relative py-20 px-6">
+        <ProcessBgPattern id="pbp-approach" />
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
 
           {/* Portrait photo — contained, cropped to face/eyes */}
@@ -265,6 +263,53 @@ export default function Home() {
             </Link>
           </div>
 
+        </div>
+      </section>
+
+      {/* ── DIFFERENZIERUNG ──────────────────────────────────────────── */}
+      <section className="relative py-20 px-6" style={{ backgroundColor: "white" }}>
+        <ProcessBgPattern id="pbp-diff" />
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-10 anim-slide-left">
+            <p
+              style={{ color: "var(--accent)" }}
+              className="text-xs font-bold uppercase tracking-widest mb-3"
+            >
+              {h.diffTag}
+            </p>
+            <h2
+              className="heading-serif text-3xl md:text-4xl"
+              style={{ color: "var(--navy)", fontWeight: 400 }}
+            >
+              {h.diffTitle}
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            {h.diff.map((item, i) => {
+              const Icon = DIFF_ICONS[i];
+              return (
+                <div
+                  key={item.title}
+                  className="anim-fade-up"
+                  style={{ animationDelay: `${(i + 1) * 0.1}s` }}
+                >
+                  <div
+                    className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
+                    style={{ backgroundColor: "var(--navy-faint)" }}
+                  >
+                    <Icon size={20} strokeWidth={1.5} style={{ color: "var(--navy)" }} />
+                  </div>
+                  <h3
+                    className="font-bold text-sm mb-2 leading-snug"
+                    style={{ color: "var(--navy)" }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{item.body}</p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
